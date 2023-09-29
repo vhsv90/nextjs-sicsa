@@ -1,0 +1,31 @@
+{
+  "name": "nextjs-sicsa",
+  "version": "1.0.0",
+  "description": "Next JS 12 Application for SICSA Website",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vhsv90/nextjs-sicsa.git"
+  },
+  "keywords": [
+    "nextjs",
+    "react"
+  ],
+  "author": "vhsv90",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vhsv90/nextjs-sicsa/issues"
+  },
+  "homepage": "https://github.com/vhsv90/nextjs-sicsa#readme",
+  "dependencies": {
+    "next": "^12.3.4",
+    "next-i18next": "^14.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
