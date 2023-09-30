@@ -4,6 +4,8 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
+ import Layout from '@components/layout/Layout'
+ 
 export default function Home({ testimonials }) {
 
   const router = useRouter()
@@ -13,25 +15,25 @@ export default function Home({ testimonials }) {
     console.log('cmsData from strapi', testimonials)
 
   return (
-    <div style={{margin: '20px'}}>
+    <Layout>
+        <div style={{margin: '20px'}}>
+            <h1>Index Page</h1>
+            <h2>{testimonials[0].attributes.Name}</h2>
+            <h3>{testimonials[0].attributes.Company}</h3>
+            <h5>{testimonials[0].attributes.Testimony}</h5>
 
-        <h1>Index Page</h1>
-        <h2>{testimonials[0].attributes.Name}</h2>
-        <h3>{testimonials[0].attributes.Company}</h3>
-        <h5>{testimonials[0].attributes.Testimony}</h5>
-
-        <div>{t('current_locale')}: {t(router.locale)}</div>
-        <div>
-            <Link
-            href={router.pathname}
-            locale={router.locale === 'en' ? 'es-CR' : 'en'}>
-            <button>
-                {t('change_locale')}
-            </button>
-            </Link>
+            <div>{t('current_locale')}: {t(router.locale)}</div>
+            <div>
+                <Link
+                href={router.pathname}
+                locale={router.locale === 'en' ? 'es-CR' : 'en'}>
+                <button>
+                    {t('change_locale')}
+                </button>
+                </Link>
+            </div>
         </div>
-    </div>
-
+    </Layout>
   )
 }
 

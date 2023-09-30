@@ -1,15 +1,17 @@
-import Layout from "@/components/Layout"
-import { appWithTranslation } from 'next-i18next';
+import '@public/css/app.2afad0c.bundle.css'
+import '@public/css/swiper-custom.css'
 
-import dynamic from "next/dynamic";
-import Link from "next/link";
-import { useState } from "react";
+import React, { useEffect, useState } from 'react'
+import Preloader from '@components/elements/Preloader'
+
+import { appWithTranslation } from 'next-i18next'
+
+import dynamic from 'next/dynamic'
+import Link from 'next/link'
 
 function MyApp({ Component, pageProps }) {
     return (
-      <Layout>
         <Component {...pageProps} />
-      </Layout>
     )
 }
 
