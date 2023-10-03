@@ -32,34 +32,8 @@ const Header = ({ handleOpen, headerStyle }) => {
                             <div className="header-nav">
                                 <nav className="nav-main-menu d-none d-xl-block">
                                     <ul className="main-menu">
-                                        <li className="has-children">
-                                            <Link href="#"><a className="active">Home</a></Link>
-                                            <ul className="sub-menu two-col">
-                                                <li>
-                                                    <Link href="/"><a><i className="fi fi-rr-home" />Homepage - 1</a></Link>
-                                                </li>
-                                                <li>
-                                                    <Link href="/index-2"><a><i className="fi fi-rr-home" />Homepage - 2</a></Link>
-                                                </li>
-                                                <li>
-                                                    <Link href="/index-3"><a><i className="fi fi-rr-home" />Homepage - 3</a></Link>
-                                                </li>
-                                                <li>
-                                                    <Link href="/index-4"><a><i className="fi fi-rr-home" />Homepage - 4</a></Link>
-                                                </li>
-                                                <li>
-                                                    <Link href="/index-5"><a><i className="fi fi-rr-home" />Homepage - 5</a></Link>
-                                                </li>
-                                                <li>
-                                                    <Link href="/index-6"><a><i className="fi fi-rr-home" />Homepage - 6</a></Link>
-                                                </li>
-                                                <li>
-                                                    <Link href="/index-7"><a><i className="fi fi-rr-home" />Homepage - 7</a></Link>
-                                                </li>
-                                                <li>
-                                                    <Link href="/index-8"><a><i className="fi fi-rr-home" />Homepage - 8</a></Link>
-                                                </li>
-                                            </ul>
+                                        <li>
+                                            <Link href="/"><a className="active">Home</a></Link>
                                         </li>
                                         <li className="has-children">
                                             <Link href="#"><a>About</a></Link>
