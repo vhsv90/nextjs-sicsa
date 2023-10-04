@@ -23,8 +23,6 @@ const Sidebar = ({ openClass, headerNav }) => {
         }
     }
 
-    console.log('headerNav sidebar cmpnt', headerNav)
-
     const sidebarMenu = headerNav.map((item, i) => {
 
         return <>

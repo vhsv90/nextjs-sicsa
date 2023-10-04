@@ -18,7 +18,7 @@ import HappyCustomer from '@components/blocks/HappyCustomer'
 import LatestBlogs from '@components/blocks/LatestBlogs'
 import Newsletter from '@components/elements/Newsletter'
 
-export default function Home({ headerNavigation, testimonials }) {
+export default function Home({ navigation, testimonials }) {
 
   const router = useRouter()
   const { t } = useTranslation('common')
@@ -31,8 +31,7 @@ export default function Home({ headerNavigation, testimonials }) {
     console.log('testimonials from strapi', testimonials)
 
   return (
-    <Layout headerNav={headerNavigation}>
-
+    <Layout navigation={navigation}>
         { /* Hero Component */ }
         <HomepageHero />
         { /* Clients Component */ }
@@ -86,15 +85,15 @@ export const getServerSideProps = async ({ locale }) => {
     const resTestimonials = await fetch(`${strapiService.URL}${strapiService.Endpoints.Testimonials}?locale=${locale}`)
     const testimonialsData = await resTestimonials.json()
 
-    const resHeaderNavigation = await fetch(`${strapiService.URL}${strapiService.Endpoints.HeaderNavigation}?locale=${locale}&type=TREE`)
-    const headerNavigationData = await resHeaderNavigation.json()
+    const resNavigation = await fetch(`${strapiService.URL}${strapiService.Endpoints.Navigation}?locale=${locale}&type=TREE`)
+    const navigationData = await resNavigation.json()
 
     // TODO: remove log
 //    console.log(`testimonials: `, testimonialsData, ' header-Navigation: ', headerNavigationData)
 
     return {
         props: {
-            headerNavigation: headerNavigationData,
+            navigation: navigationData,
             testimonials: testimonialsData.data,
             ...await serverSideTranslations(locale, ['common']),
           },

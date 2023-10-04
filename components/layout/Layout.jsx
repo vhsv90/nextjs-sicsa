@@ -4,7 +4,7 @@ import Footer from '@components/layout/Footer'
 import Header from '@components/layout/Header'
 import Sidebar from '@components/layout/Sidebar'
 
-function Layout({ children, headerStyle, headerNav }) {
+function Layout({ children, headerStyle, navigation }) {
 
     const [openClass, setOpenClass] = useState('');
 
@@ -20,10 +20,13 @@ function Layout({ children, headerStyle, headerNav }) {
         }
     }
 
+    const headerNav = navigation.find(obj => { return obj.uiRouterKey === 'header-navigation'}).items
+    const footerNav = navigation.find(obj => { return obj.uiRouterKey === 'footer-navigation'})
+
+
     return (
         <>
             <div  className={openClass && "body-overlay-1"} onClick={handleRemove} />
-            {/* TODO: send top navigation to Header/Sidebar component */}
             <Header handleOpen={handleOpen} headerStyle={headerStyle} headerNav={headerNav} />
             <Sidebar openClass={openClass} headerNav={headerNav} />
             <main className="main">

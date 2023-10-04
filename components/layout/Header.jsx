@@ -21,6 +21,8 @@ const Header = ({ handleOpen, headerStyle, headerNav }) => {
         })
     })
 
+    console.log('headerNav -> ', headerNav)
+
     const renderMenu = headerNav.map(item => {
         return <>
                 <li className={item.items.length > 0 ? 'has-children' : 'NA'}>
