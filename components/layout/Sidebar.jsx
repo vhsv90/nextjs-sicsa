@@ -3,7 +3,7 @@ import { useState } from 'react'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 
-const Sidebar = ({ openClass }) => {
+const Sidebar = ({ openClass, headerNav }) => {
 
     const [isActive, setIsActive] = useState({
         status: false,
@@ -23,6 +23,27 @@ const Sidebar = ({ openClass }) => {
         }
     }
 
+    console.log('headerNav sidebar cmpnt', headerNav)
+
+    const sidebarMenu = headerNav.map((item, i) => {
+
+        return <>
+            <li className={isActive.key == (i+1) ? "has-children active" : "has-children"}>
+                <span onClick={() => handleToggle(i+1)} className="menu-expand">
+                    {/* {item.items.length > 0 && <i className="fi-rr-angle-small-down"></i>} */}
+                </span>
+                <Link href={item.path}><a className="">{item.title}</a></Link>
+                {item.items.length > 0 &&
+                    <ul>
+                        {item.items.map(subitem =>{
+                            return <li>
+                                <Link href={subitem.path}><a>{subitem.title}</a></Link>
+                            </li>
+                        })}
+                    </ul>}
+            </li>
+        </>
+    })
 
     return (
         <>
@@ -30,7 +51,7 @@ const Sidebar = ({ openClass }) => {
                 <PerfectScrollbar className="mobile-header-wrapper-inner">
                     <div className="mobile-header-top">
                         <div className="user-account">
-                            <img src="/imgs/template/ava_1.png" alt="Agon" />
+                            {/* <img src="/imgs/template/ava_1.png" alt="Agon" />
                             <div className="content">
                                 <h6 className="user-name">
                                     Hi <span className="text-brand">Steven !</span>
@@ -38,212 +59,49 @@ const Sidebar = ({ openClass }) => {
                                 <p className="font-xs text-muted">
                                     You have 5 new messages
                                 </p>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="mobile-header-content-area">
                         <div className="perfect-scroll">
                             <div className="mobile-menu-wrap mobile-header-border">
                                 <nav>
+                                    {/* <h6 className="mb-10">Menu Title</h6> */}
                                     <ul className="mobile-menu font-heading">
-                                        <li className={isActive.key == 1 ? "has-children active" : "has-children"}>
-                                            <span onClick={() => handleToggle(1)} className="menu-expand"><i className="fi-rr-angle-small-down"></i></span>
-                                            <Link href="/"><a className="active">Home</a></Link>
-                                            <ul className={isActive.key == 1 ? "sub-menu d-block" : "sub-menu d-none"}>
-                                                <li>
-
-                                                    <Link href="/"><a>Homepage - 1</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/index-2"><a>Homepage - 2</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/index-3"><a>Homepage - 3</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/index-4"><a>Homepage - 4</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/index-5"><a>Homepage - 5</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/index-6"><a>Homepage - 6</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/index-7"><a>Homepage - 7</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/index-8"><a>Homepage - 8</a></Link>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li className={isActive.key == 2 ? "has-children active" : "has-children"}>
-                                            <span onClick={() => handleToggle(2)} className="menu-expand"><i className="fi-rr-angle-small-down"></i></span>
-
-                                            <Link href="/page-about-1"><a>About</a></Link>
-                                            <ul className={isActive.key == 2 ? "sub-menu d-block" : "sub-menu d-none"}>
-                                                <li>
-
-                                                    <Link href="/page-about-1"><a>About Us - 1</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/page-about-2"><a>About Us - 2</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/page-about-3"><a>About Us - 3</a></Link>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li className={isActive.key == 3 ? "has-children active" : "has-children"}>
-                                            <span onClick={() => handleToggle(3)}  className="menu-expand"><i className="fi-rr-angle-small-down"></i></span>
-
-                                            <Link href="/page-service-1"><a>Company</a></Link>
-                                            <ul className={isActive.key == 3 ? "sub-menu d-block" : "sub-menu d-none"}>
-                                                <li>
-
-                                                    <Link href="/page-service-1"><a className="closer">Services - 1</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/page-service-2"><a className="closer">Services - 2</a></Link>
-                                                </li>
-                                                <li className="hr"><span /></li>
-                                                <li>
-
-                                                    <Link href="/page-pricing-1"><a className="closer">Pricing - 1</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/page-pricing-2"><a className="closer">Pricing - 2</a></Link>
-                                                </li>
-                                                <li className="hr"><span /></li>
-                                                <li>
-
-                                                    <Link href="/page-faqs-1"><a className="closer">FAQs - 1</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/page-faqs-2"><a className="closer">FAQs - 2</a></Link>
-                                                </li>
-                                                <li className="hr"><span /></li>
-                                                <li>
-
-                                                    <Link href="/page-career"><a className="closer">Career</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/page-career-detail"><a className="closer">Career Detail</a></Link>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li className={isActive.key == 4 ? "has-children active" : "has-children"}>
-                                            <span onClick={() => handleToggle(4)}  className="menu-expand"><i className="fi-rr-angle-small-down"></i></span>
-
-                                            <Link href="/#"><a>Pages</a></Link>
-                                            <ul className={isActive.key == 4 ? "sub-menu d-block" : "sub-menu d-none"}>
-                                                <li>
-
-                                                    <Link href="/page-contact"><a>Contact</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/page-signup"><a>Sign Up</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/page-login"><a>Log In</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/page-reset"><a>Reset Password</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/404"><a>Error 404</a></Link>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li className={isActive.key == 5 ? "has-children active" : "has-children"}>
-                                            <span onClick={() => handleToggle(5)}  className="menu-expand"><i className="fi-rr-angle-small-down"></i></span>
-
-                                            <Link href="/blog-1"><a>Blog</a></Link>
-                                            <ul className={isActive.key == 5 ? "sub-menu d-block" : "sub-menu d-none"}>
-                                                <li>
-
-                                                    <Link href="/blog-1"><a className="closer">Blog 1</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/blog-2"><a className="closer">Blog 2</a></Link>
-                                                </li>
-                                                <li className="hr"><span /></li>
-                                                <li>
-
-                                                    <Link href="/blog-single"><a>Blog Single</a></Link>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li className={isActive.key == 6 ? "has-children active" : "has-children"}>
-                                            <span onClick={() => handleToggle(6)}  className="menu-expand"><i className="fi-rr-angle-small-down"></i></span>
-
-                                            <Link href="/page-shop-grid-1"><a>Shop</a></Link>
-                                            <ul className={isActive.key == 6 ? "sub-menu d-block" : "sub-menu d-none"}>
-                                                <li>
-
-                                                    <Link href="/page-shop-grid-1"><a className="closer">Shop Grid - 1</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/page-shop-grid-2"><a className="closer">Shop Grid - 2</a></Link>
-                                                </li>
-                                                <li>
-
-                                                    <Link href="/shop/1"><a>Product Details</a></Link>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        {sidebarMenu}
                                     </ul>
                                 </nav>
                             </div>
+
+                            {/* TODO: Add footer-navigation here */}
                             <div className="mobile-account">
                                 <h6 className="mb-10">Your Account</h6>
                                 <ul className="mobile-menu font-heading">
                                     <li>
-                                        <Link href="/#"><a>Profile</a></Link>
+                                        <Link href="/#"><a>Pending</a></Link>
                                     </li>
                                     <li>
-                                        <Link href="/#"><a>Work Preferences</a></Link>
+                                        <Link href="/#"><a>Footer</a></Link>
                                     </li>
                                     <li>
-                                        <Link href="/#"><a>My Boosted Shots</a></Link>
+                                        <Link href="/#"><a>Navigation</a></Link>
                                     </li>
                                     <li>
-                                        <Link href="/#"><a>My Collections</a></Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/#"><a>Account Settings</a></Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/#"><a>Go Pro</a></Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/page-login"><a>Sign Out</a></Link>
+                                        <Link href="/#"><a>Integration</a></Link>
                                     </li>
                                 </ul>
                             </div>
+                            <div className="site-copyright color-gray-400 text-body-lead">
+                                Copyright 2022 © SICSA
+                            </div>
                             <div className="site-copyright color-gray-400">
-                                Copyright 2022 © Agon - Agency Template.<br />Designed
-                                by
-                                <Link href="http://alithemes.com"><a>&nbsp; AliThemes</a></Link>
+                                Privacy Policy
+                            </div>
+                            <div className="site-copyright color-gray-400">
+                                Cookies
+                            </div>
+                            <div className="site-copyright color-gray-400">
+                                Terms of Service
                             </div>
                         </div>
                     </div>

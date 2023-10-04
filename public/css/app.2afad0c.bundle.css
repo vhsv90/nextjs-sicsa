@@ -17762,7 +17762,7 @@ h6 {
     color: #101828;
     background-color: #F2F4F7;
     border-radius: 50px;
-    font-size: 18px;
+    font-size: 13px;
     line-height: 22px;
     font-family: "Chivo", sans-serif;
     font-weight: bold
@@ -20242,7 +20242,7 @@ label {
     margin-left: 4px
 }
 .header .main-menu li.hr {
-    padding: 0px 22px
+    padding: 0px 15px
 }
 .header .main-menu li.hr span {
     background-color: #F2F4F7;
@@ -20286,7 +20286,7 @@ label {
     top: 100%;
     left: 0px;
     z-index: 999;
-    min-width: 180px;
+    min-width: 230px;
     border-radius: 4px;
     padding: 8px 0px 8px 0;
     -webkit-box-shadow: 4px 4px 40px rgba(16, 24, 40, 0.1);
@@ -20388,7 +20388,7 @@ label {
     background-color: #3286e0
 }
 .sticky-bar.stick .burger-icon {
-    top: 45px
+    top: 20px
 }
 .user-account {
     display: -webkit-box;
@@ -20749,7 +20749,7 @@ label {
     cursor: pointer;
     -webkit-transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-    top: 45px;
+    top: 20px;
     right: 27px;
     z-index: 1002
 }
@@ -24888,7 +24888,7 @@ input.qty-val {
     }
     .header .main-header .header-right .block-signin .btn.btn-default {
         padding: 12px 55px 12px 20px;
-        font-size: 16px
+        font-size: 12px
     }
     .box-newsletter .img-newsletter {
         position: relative;
@@ -25060,7 +25060,7 @@ input.qty-val {
         line-height: 18px
     }
     .burger-icon {
-        top: 17px
+        top: 5px
     }
     .sticky-bar.stick .burger-icon {
         top: 17px

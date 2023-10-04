@@ -7,6 +7,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 // Layout
 import Layout from '@components/layout/Layout'
 // Page Blocks
+import strapiService from 'utils/strapi-service'
 import HomepageHero from '@components/blocks/HomepageHero'
 import Clients from '@components/blocks/Clients'
 import CustomSlider from '@components/blocks/CustomSlider'
@@ -17,7 +18,7 @@ import HappyCustomer from '@components/blocks/HappyCustomer'
 import LatestBlogs from '@components/blocks/LatestBlogs'
 import Newsletter from '@components/elements/Newsletter'
 
-export default function Home({ testimonials }) {
+export default function Home({ headerNavigation, testimonials }) {
 
   const router = useRouter()
   const { t } = useTranslation('common')
@@ -27,10 +28,10 @@ export default function Home({ testimonials }) {
   const handleOnClick = (index) => setActiveIndex(index)
 
   if(testimonials)
-    console.log('cmsData from strapi', testimonials)
+    console.log('testimonials from strapi', testimonials)
 
   return (
-    <Layout>
+    <Layout headerNav={headerNavigation}>
 
         { /* Hero Component */ }
         <HomepageHero />
@@ -82,16 +83,18 @@ export default function Home({ testimonials }) {
 export const getServerSideProps = async ({ locale }) => {
 
     // strapi api call
-    // entities: testimonials[], 
-    // TODO: change the url to const or service
-    const res = await fetch(`https://seal-app-qm6lw.ondigitalocean.app/api/testimonials?locale=${locale}`)
-    const testimonialsData = await res.json()
+    const resTestimonials = await fetch(`${strapiService.URL}${strapiService.Endpoints.Testimonials}?locale=${locale}`)
+    const testimonialsData = await resTestimonials.json()
+
+    const resHeaderNavigation = await fetch(`${strapiService.URL}${strapiService.Endpoints.HeaderNavigation}?locale=${locale}&type=TREE`)
+    const headerNavigationData = await resHeaderNavigation.json()
 
     // TODO: remove log
-    console.log(testimonialsData)
+//    console.log(`testimonials: `, testimonialsData, ' header-Navigation: ', headerNavigationData)
 
     return {
         props: {
+            headerNavigation: headerNavigationData,
             testimonials: testimonialsData.data,
             ...await serverSideTranslations(locale, ['common']),
           },
