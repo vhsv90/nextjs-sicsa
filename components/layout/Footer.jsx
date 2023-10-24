@@ -27,18 +27,20 @@ const Footer = ({ footerNav }) => {
             <footer className="footer mt-50">
                 <div className="container">
                     <div className="row">
-                        { /* TODO: encapsulated this information in footer-archetype */ }
+
                         <div className="col-lg-3 width-25 mb-30">
                             <h4 className="text-heading-5">Contact</h4>
                             <div className="mt-20 text-body-text color-gray-600 mb-20">4517 Washington Ave. Manchester, Kentucky 39495</div>
                             <div className="mt-20 text-body-text color-gray-600">(239) 555-0108</div>
                             <div className="text-body-text color-gray-600">contact@agon.com</div>
                         </div>
+
                         {renderMenu}
                     </div>
 
                     <div className="footer-bottom mt-20">
                         <div className="row">
+
                             <div className="col-md-6">
                                 <span className="color-gray-400 text-body-lead">© SICSA</span>
                                 <Link href="/page-terms">
@@ -51,6 +53,7 @@ const Footer = ({ footerNav }) => {
                                     <a className="text-body-text color-gray-400 ml-50">Terms of service</a>
                                 </Link>
                             </div>
+
                             <div className="col-md-6 text-center text-lg-end text-md-end">
                                 <div className="footer-social">
                                     <Link href="https://facebook.com">
@@ -67,6 +70,7 @@ const Footer = ({ footerNav }) => {
                                     </Link>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 

@@ -18,7 +18,7 @@ import HappyCustomer from '@components/blocks/HappyCustomer'
 import LatestBlogs from '@components/blocks/LatestBlogs'
 import Newsletter from '@components/elements/Newsletter'
 
-export default function Home({ navigation, testimonials }) {
+export default function Home({ navigation, header, footer, testimonials }) {
 
   const router = useRouter()
   const { t } = useTranslation('common')
@@ -27,11 +27,8 @@ export default function Home({ navigation, testimonials }) {
 
   const handleOnClick = (index) => setActiveIndex(index)
 
-  if(testimonials)
-    console.log('testimonials from strapi', testimonials)
-
   return (
-    <Layout navigation={navigation}>
+    <Layout navigation={navigation} header={header} footer={footer}>
         { /* Hero Component */ }
         <HomepageHero />
         { /* Clients Component */ }
@@ -81,15 +78,26 @@ export default function Home({ navigation, testimonials }) {
 export const getServerSideProps = async ({ locale }) => {
 
     // strapi api call
-    const resTestimonials = await fetch(`${strapiService.URL}${strapiService.Endpoints.Testimonials}?locale=${locale}`)
+    const resTestimonials = await fetch(`${strapiService.URL}${strapiService.Endpoints.Testimonials}?locale=${locale}&populate=*`)
     const testimonialsData = await resTestimonials.json()
 
     const resNavigation = await fetch(`${strapiService.URL}${strapiService.Endpoints.Navigation}?locale=${locale}&type=TREE`)
     const navigationData = await resNavigation.json()
+    console.log('navigationData ', navigationData)
+
+    const resHeader = await fetch(`${strapiService.URL}${strapiService.Endpoints.Header}?locale=${locale}&populate=*`)
+    const headerData = await resHeader.json()
+    console.log('headerData ', headerData)
+
+    const resFooter = await fetch(`${strapiService.URL}${strapiService.Endpoints.Footer}?locale=${locale}&populate=*`)
+    const footerData = await resFooter.json()
+    console.log('footerData ', footerData)
 
     return {
         props: {
             navigation: navigationData,
+            header: headerData.data,
+            footer: footerData,
             testimonials: testimonialsData.data,
             ...await serverSideTranslations(locale, ['common']),
           },

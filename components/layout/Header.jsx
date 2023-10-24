@@ -4,8 +4,10 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 // i18n
 import { useTranslation } from 'next-i18next'
+// Page Blocks
+import strapiService from 'utils/strapi-service'
 
-const Header = ({ handleOpen, headerStyle, headerNav }) => {
+const Header = ({ handleOpen, headerStyle, headerNav, header}) => {
 
     const [scroll, setScroll] = useState(0)
     const router = useRouter()
@@ -38,6 +40,9 @@ const Header = ({ handleOpen, headerStyle, headerNav }) => {
         </>
     })
 
+    const imgUrl = `${strapiService.URL}${header.attributes.ImageLogo.data.attributes.url}`
+    const altText = header.attributes.ImageLogo.data.attributes.alternativeText
+
     return (
         <>
             <header className={scroll ? `${headerStyle} header sticky-bar stick ` : `${headerStyle} header sticky-bar`}>
@@ -47,7 +52,7 @@ const Header = ({ handleOpen, headerStyle, headerNav }) => {
                             <div className="header-logo">
                                 <Link href="/">
                                     <a className="d-flex">
-                                        {headerStyle ? <img alt="SICSA" src="/imgs/template/logo-white.svg" /> : <img alt="SICSA" src="/imgs/template/logo.svg" />}
+                                        <img alt={altText} src={imgUrl} />
                                     </a>
                                 </Link>
                             </div>
@@ -66,7 +71,7 @@ const Header = ({ handleOpen, headerStyle, headerNav }) => {
                             <div className="block-signin">
                                 <Link href={router.pathname} locale={router.locale === 'en' ? 'es-CR' : 'en'}>
                                     <a className="btn btn-default hover-up icon-arrow-right">
-                                        {t('change_locale')}
+                                        { header.attributes.ChangeLanguageText }
                                     </a>
                                 </Link>
                             </div>
@@ -76,7 +81,6 @@ const Header = ({ handleOpen, headerStyle, headerNav }) => {
             </header>
         </>
     )
-
 }
 
 export default Header
