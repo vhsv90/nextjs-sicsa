@@ -2,171 +2,41 @@
 import React from 'react'
 import Link from 'next/link'
 
-const Footer = () => {
+const Footer = ({ footerNav }) => {
+
+    const renderMenu = footerNav.map(item => {
+
+        return <>
+            <div className="col-lg-3 width-30 mb-30">
+                <h4 className="text-heading-5">{item.title}</h4>
+                {item.items.length > 0 && 
+                    <ul className="menu-footer mt-20">
+                        {item.items.map(subItem => {
+                            return <li>
+                                <Link href={subItem.path}><a><i className={`fi fi-rr-${subItem.Icon}`} />{subItem.title}</a></Link>
+                            </li>
+                        })}
+                    </ul>
+                }
+            </div>
+        </>
+    })
+
     return (
         <>
             <footer className="footer mt-50">
                 <div className="container">
-                    <div className="footer-top">
-                        <div className="row">
-                            <div className="col-md-4 col-sm-6 text-center text-md-start">
-                                <Link href="/">
-                                    <a>
-                                        <img alt="Agon" src="/imgs/template/logo.svg" />
-                                    </a>
-                                </Link>
-                            </div>
-                            <div className="col-md-8 col-sm-6 text-center text-md-end">
-                                <span className="color-gray-900 text-heading-6 mr-30 text-mb-sm-20">Ready to get started?</span>
-                                <Link href="/page-signup">
-                                    <a className="btn btn-square">Create an Account</a>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
                     <div className="row">
-                        <div className="col-lg-3 width-20 mb-30">
+                        { /* TODO: encapsulated this information in footer-archetype */ }
+                        <div className="col-lg-3 width-25 mb-30">
                             <h4 className="text-heading-5">Contact</h4>
                             <div className="mt-20 text-body-text color-gray-600 mb-20">4517 Washington Ave. Manchester, Kentucky 39495</div>
                             <div className="mt-20 text-body-text color-gray-600">(239) 555-0108</div>
                             <div className="text-body-text color-gray-600">contact@agon.com</div>
                         </div>
-                        <div className="col-lg-3 width-20 mb-30">
-                            <h4 className="text-heading-5">About Us</h4>
-                            <ul className="menu-footer mt-20">
-                                <li>
-                                    <Link href="/#">
-                                        <a>Mission &amp; Vision</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/#">
-                                        <a>Our Team</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/page-career">
-                                        <a>Careers</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/#">
-                                        <a>Press &amp; Media</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/#">
-                                        <a>Advertising</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/#">
-                                        <a>Testimonials</a>
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="col-lg-3 width-20 mb-30">
-                            <h4 className="text-heading-5">Discover</h4>
-                            <ul className="menu-footer mt-20">
-                                <li>
-                                    <Link href="/blog-2">
-                                        <a>Our Blog</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/page-pricing-1">
-                                        <a>Plans &amp; Pricing</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/#">
-                                        <a>Knowledge Base</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/#">
-                                        <a>Cookie Policy</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/#">
-                                        <a>Office Center</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/blog-1">
-                                        <a>News &amp; Events</a>
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="col-lg-3 width-20 mb-30">
-                            <h4 className="text-heading-5">Support</h4>
-                            <ul className="menu-footer mt-20">
-                                <li>
-                                    <Link href="/page-faqs-1">
-                                        <a>FAQs</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/#">
-                                        <a>Editor Help</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/#">
-                                        <a>Community</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/#">
-                                        <a>Live Chatting</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/page-contact">
-                                        <a>Contact Us</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/#">
-                                        <a>Support Center</a>
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="col-lg-3 width-16">
-                            <h4 className="text-heading-5">Useful links</h4>
-                            <ul className="menu-footer mt-20">
-                                <li>
-                                    <Link href="/#">
-                                        <a>Request an offer</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/#">
-                                        <a>How it works</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/page-pricing-2">
-                                        <a>Pricing</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/#">
-                                        <a>Reviews</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/#">
-                                        <a>Stories</a>
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
+                        {renderMenu}
                     </div>
+
                     <div className="footer-bottom mt-20">
                         <div className="row">
                             <div className="col-md-6">
@@ -199,10 +69,11 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
+
                 </div>
             </footer>
         </>
     )
 }
 
-export default Footer;
+export default Footer

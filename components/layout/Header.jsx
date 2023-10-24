@@ -2,7 +2,6 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-
 // i18n
 import { useTranslation } from 'next-i18next'
 
