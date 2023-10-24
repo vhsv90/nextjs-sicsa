@@ -31,7 +31,7 @@ function Layout({ children, headerStyle, navigation, header, footer }) {
             <main className="main">
                 {children}
             </main>
-            <Footer footerNav={footerNav} />
+            <Footer footerNav={footerNav} footer={footer} />
             <BackToTop/>
         </>
     )

@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-const Footer = ({ footerNav }) => {
+const Footer = ({ footerNav, footer }) => {
 
     const renderMenu = footerNav.map(item => {
 
@@ -22,6 +22,8 @@ const Footer = ({ footerNav }) => {
         </>
     })
 
+    const LeftNav = footer.data.attributes.LeftNav
+
     return (
         <>
             <footer className="footer mt-50">
@@ -29,13 +31,14 @@ const Footer = ({ footerNav }) => {
                     <div className="row">
 
                         <div className="col-lg-3 width-25 mb-30">
-                            <h4 className="text-heading-5">Contact</h4>
-                            <div className="mt-20 text-body-text color-gray-600 mb-20">4517 Washington Ave. Manchester, Kentucky 39495</div>
-                            <div className="mt-20 text-body-text color-gray-600">(239) 555-0108</div>
-                            <div className="text-body-text color-gray-600">contact@agon.com</div>
+                            <h4 className="text-heading-5">{LeftNav.Header}</h4>
+                            <div className="mt-20 text-body-text color-gray-600 mb-20">{LeftNav.P1}</div>
+                            <div className="mt-20 text-body-text color-gray-600">{LeftNav.P2}</div>
+                            <div className="text-body-text color-gray-600">{LeftNav.email}</div>
                         </div>
 
                         {renderMenu}
+
                     </div>
 
                     <div className="footer-bottom mt-20">
