@@ -21,8 +21,7 @@ function Layout({ children, headerStyle, navigation }) {
     }
 
     const headerNav = navigation.find(obj => { return obj.uiRouterKey === 'header-navigation'}).items
-    const footerNav = navigation.find(obj => { return obj.uiRouterKey === 'footer-navigation'})
-
+    const footerNav = navigation.find(obj => { return obj.uiRouterKey === 'footer-navigation'}).items
 
     return (
         <>
@@ -32,7 +31,7 @@ function Layout({ children, headerStyle, navigation }) {
             <main className="main">
                 {children}
             </main>
-            <Footer />
+            <Footer footerNav={footerNav} />
             <BackToTop/>
         </>
     )

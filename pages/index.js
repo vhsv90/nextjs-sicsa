@@ -52,9 +52,8 @@ export default function Home({ navigation, testimonials }) {
         { /* Newsletter Component */ }
         <Newsletter />
 
-        {/* TODO: remo this test block */}
-
         {/*
+        TODO: remove this block
         <p>Strapi test</p>
         <div style={{margin: '20px'}}>
             <h1>Index Page</h1>
@@ -87,9 +86,6 @@ export const getServerSideProps = async ({ locale }) => {
 
     const resNavigation = await fetch(`${strapiService.URL}${strapiService.Endpoints.Navigation}?locale=${locale}&type=TREE`)
     const navigationData = await resNavigation.json()
-
-    // TODO: remove log
-//    console.log(`testimonials: `, testimonialsData, ' header-Navigation: ', headerNavigationData)
 
     return {
         props: {
